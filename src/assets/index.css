@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  @apply text-[#6E6893] bg-[#F2F0F9] h-full min-h-[512px] flex flex-col items-stretch;
+  body {
+    @apply grow overflow-auto flex flex-col items-stretch w-[90%] max-w-screen-xl mx-auto font-interif text-sm;
+    #app {
+      @apply contents;
+    }
+  }
+}
