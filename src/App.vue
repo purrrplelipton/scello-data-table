@@ -2,6 +2,7 @@
 import { vAutoAnimate } from "@formkit/auto-animate/vue";
 import { createId } from "@paralleldrive/cuid2";
 import {
+  PhArrowsClockwise,
   PhCheckSquare,
   PhDotsThreeVertical,
   PhFunnel,
@@ -78,10 +79,25 @@ watch(show_filter_dropdown, (show_filter_dropdown) => {
 </script>
 
 <template>
-  <header class="h-16 flex items-center">
+  <header class="shrink-0 h-16 flex items-center">
     <h1 class="uppercase font-bold text-[#6E6893] tracking-widest">
       table heading
     </h1>
+    <button
+      type="button"
+      @click=""
+      :aria-disabled="working"
+      class="ml-auto text-xl aspect-square grid place-items-center"
+      title="Re-Populate table"
+    >
+      <ph-arrows-clockwise
+        weight="bold"
+        color="#25213B"
+        aria-hidden="true"
+        class="pointer-events-none select-none"
+        :class="[{ 'animate-spin': working }]"
+      />
+    </button>
   </header>
   <div class="mt-2.5 mb-5 flex items-center border-b border-[#C6C2DE]">
     <tab-switch
@@ -93,9 +109,10 @@ watch(show_filter_dropdown, (show_filter_dropdown) => {
     />
   </div>
   <div
-    class="grow overflow-auto flex flex-col items-stretch rounded-lg shadow-[0_0_5px_rgba(0_0_0_/_20%)] bg-white mb-8 divide-y *:border-[#D9D5EC]"
+    v-auto-animate
+    class="grow overflow-auto flex flex-col items-stretch rounded-lg shadow-[0_0_5px_rgba(0_0_0_/_20%)] bg-white mb-8"
   >
-    <div class="flex gap-5 items-center py-3.5 px-5">
+    <div class="flex gap-5 items-center py-3.5 px-5 border-b border-[#D9D5EC]">
       <div ref="filter_dropdown" v-auto-animate>
         <button
           type="button"
@@ -106,10 +123,14 @@ watch(show_filter_dropdown, (show_filter_dropdown) => {
               show_filter_dropdown = true;
             }
           "
-          class="aria-disabled:opacity-50 aria-disabled:cursor-default rounded-lg border text-[#25213B] border-[#C6C2DE] flex gap-2.5 p-[0.5625rem] items-center transition hover:border-[#6D5BD0] focus-visible:border-[#6D5BD0] outline-none"
-          :class="{ 'shadow-[0_0_3px_#6D5BD0]': show_filter_dropdown }"
+          class="aria-disabled:opacity-50 aria-disabled:cursor-default rounded-lg border text-[#25213B] flex gap-2.5 p-[0.5625rem] items-center transition hover:border-[#6D5BD0] outline-none"
+          :class="[
+            show_filter_dropdown
+              ? 'shadow-[0_0_3px_#6D5BD0] border-[#6D5BD0]'
+              : 'border-[#C6C2DE] focus-visible:border-[#6D5BD0]',
+          ]"
         >
-          <ph-funnel class="text-xl text-[#8B83BA]" />
+          <ph-funnel weight="fill" class="text-xl text-[#8B83BA]" />
           <span>Filter</span>
         </button>
         <div
@@ -147,12 +168,18 @@ watch(show_filter_dropdown, (show_filter_dropdown) => {
               selectedValue: activeTableFilter_bottom,
               name: 'tableFilter_bottom',
             }"
-            @update:selected-value="activeTableFilter_bottom = $event"
+            @update:selected-value="
+              ($event) => {
+                show_filter_dropdown = false;
+                activeTableFilter_bottom = $event;
+              }
+            "
           />
         </div>
       </div>
       <div class="grow max-w-96 flex items-center relative text-xs">
         <ph-magnifying-glass
+        weight="bold"
           class="text-xl absolute left-3 pointer-events-none"
         />
         <input
@@ -183,7 +210,7 @@ watch(show_filter_dropdown, (show_filter_dropdown) => {
           class="grow overflow-auto flex flex-col items-stretch divide-y *:border-[#D9D5EC]"
         >
           <div
-            class="grid gap-7 grid-cols-[auto_1fr_auto] bg-[#F4F2FF] py-3.5 px-5"
+            class="shrink-0 grid gap-7 grid-cols-[auto_1fr_auto] bg-[#F4F2FF] py-3.5 px-5 overflow-y-scroll"
           >
             <div class="flex gap-5 items-center">
               <div class="relative text-xl text-[#8B83BA]">
@@ -197,8 +224,8 @@ watch(show_filter_dropdown, (show_filter_dropdown) => {
                   role="button"
                   class="last:*:hidden first:peer-checked:*:hidden last:peer-checked:*:block"
                 >
-                  <ph-square aria-hidden="true" class="" />
-                  <ph-check-square aria-hidden="true" class="" />
+                  <ph-square weight="bold" aria-hidden="true" class="" />
+                  <ph-check-square weight="bold" aria-hidden="true" class="" />
                 </label>
               </div>
               <div class="size-4"></div>
@@ -224,13 +251,14 @@ watch(show_filter_dropdown, (show_filter_dropdown) => {
                   @click=""
                   class="aspect-square grid place-items-center text-xl text-[#8B83BA]"
                 >
-                  <ph-dots-three-vertical aria-hidden="true" class="" />
+                  <ph-dots-three-vertical weight="bold" aria-hidden="true" class="" />
                 </button>
                 <div v-if="false"></div>
               </div>
             </div>
           </div>
           <div
+            v-auto-animate
             class="grow overflow-auto gutter-stable flex flex-col items-stretch divide-y *:border-[#D9D5EC]"
           >
             <table-row
@@ -245,10 +273,6 @@ watch(show_filter_dropdown, (show_filter_dropdown) => {
         Error fetching users.
       </p>
     </template>
-    <ph-spinner v-else class="m-auto text-2xl animate-spin" />
+    <ph-spinner weight="bold" v-else class="m-auto text-2xl animate-spin" />
   </div>
 </template>
-
-<style scoped lang="css">
-/*  */
-</style>

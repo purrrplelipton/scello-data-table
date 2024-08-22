@@ -32,10 +32,12 @@ const emit = defineEmits<{
       {{ label }}
     </label>
     <ph-circle
+    weight="bold"
       aria-hidden="true"
       class="text-[#8B83BA] absolute right-2.5 text-base peer-checked:hidden pointer-events-none"
     />
     <ph-radio-button
+      weight="fill"
       aria-hidden="true"
       class="text-[#6D5BD0] absolute right-2.5 text-base peer-[:not(:checked)]:hidden pointer-events-none"
     />
