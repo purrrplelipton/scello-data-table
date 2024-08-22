@@ -9,40 +9,30 @@ import {
   PhSpinner,
   PhSquare,
 } from "@phosphor-icons/vue";
-import { onBeforeMount, ref } from "vue";
+import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
+import { onBeforeMount, ref, watch } from "vue";
 import FilterButton from "./components/FilterButton.vue";
 import TableRow from "./components/TableRow.vue";
 import TabSwitch from "./components/TabSwitch.vue";
+import __users__ from "./db.json";
 import { useUsersStore } from "./stores";
 
 const working = ref(false);
+const usersStore = useUsersStore();
 
-onBeforeMount(async () => {
-  try {
-    working.value = true;
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setUsers(
-      [
-        {
-          name: "Justin Septimus",
-          email: "example@email.com",
-          isActive: false,
-          lastLogin: "",
-          status: "paid",
-          statusOn: "",
-          amount: 200,
-          currency: "USD",
-        },
-      ].map((user) => ({ id: createId(), ...user }))
-    );
-  } catch (error) {
-    console.error("Error loading users:", error);
-  } finally {
-    working.value = false;
-  }
+onBeforeMount(() => {
+  working.value = true;
+  const load_data = new Promise((resolve) => setTimeout(resolve, 2000));
+
+  load_data
+    .then(() => usersStore.setUsers(__users__))
+    .catch(() => {
+      console.error("Error loading users.");
+    })
+    .finally(() => {
+      working.value = false;
+    });
 });
-
-const { users, setUsers } = useUsersStore();
 
 const tabs = [
   { label: "All" },
@@ -68,7 +58,23 @@ const tableFilter_bottom = [
 ].map((fltr) => ({ id: createId(), ...fltr }));
 const activeTableFilter_bottom = ref<string>(tableFilter_bottom[0].id);
 
-const showFilters = ref(false);
+const filter_dropdown = ref<HTMLDivElement | null>(null);
+const show_filter_dropdown = ref(false);
+
+const { activate, deactivate } = useFocusTrap(filter_dropdown, {
+  clickOutsideDeactivates: true,
+  onDeactivate() {
+    show_filter_dropdown.value = false;
+  },
+});
+
+watch(show_filter_dropdown, (show_filter_dropdown) => {
+  if (show_filter_dropdown) {
+    activate();
+  } else {
+    deactivate();
+  }
+});
 </script>
 
 <template>
@@ -90,9 +96,9 @@ const showFilters = ref(false);
     class="grow flex flex-col items-stretch rounded-lg shadow-md bg-white mb-8"
   >
     <template v-if="!working">
-      <template v-if="users">
+      <template v-if="usersStore.users">
         <p
-          v-if="users.length < 1"
+          v-if="usersStore.users.length < 1"
           class="my-auto text-base text-center font-medium"
         >
           No user table to display.
@@ -102,17 +108,17 @@ const showFilters = ref(false);
           class="grow overflow-auto flex flex-col items-stretch divide-y"
         >
           <div class="flex gap-5 items-center py-3.5 px-5">
-            <div v-auto-animate>
+            <div ref="filter_dropdown" v-auto-animate>
               <button
                 type="button"
-                @click="showFilters = !showFilters"
+                @click="show_filter_dropdown = true"
                 class="rounded-lg border text-[#8B83BA] border-current flex gap-2.5 p-[0.5625rem] items-center"
               >
                 <ph-funnel class="text-xl" />
                 <span>Filter</span>
               </button>
               <div
-                v-if="showFilters"
+                v-if="show_filter_dropdown"
                 class="absolute top-[calc(100%_+_4px)] z-10 flex flex-col items-stretch rounded-lg border border-[#C6C2DE] p-2.5 bg-white w-56"
               >
                 <p
@@ -128,11 +134,15 @@ const showFilters = ref(false);
                     selectedValue: activeTableFilter_top,
                     name: 'tableFilter_top',
                   }"
-                  @update:selected-value="activeTableFilter_top = $event"
+                  @update:selected-value="
+                    ($event) => {
+                      show_filter_dropdown = false;
+                      activeTableFilter_top = $event;
+                    }
+                  "
                 />
-                <hr class="border-0 h-px bg-[#F2F0F9] my-1" />
                 <p
-                  class="text-xs m-2.5 mt-0 pt-2.5 text-[#6E6893] tracking-widest uppercase"
+                  class="text-xs mt-1 mb-2.5 pt-3.5 px-2.5 text-[#6E6893] tracking-widest uppercase border-t border-[#F2F0F9]"
                 >
                   users:
                 </p>
@@ -149,11 +159,13 @@ const showFilters = ref(false);
               </div>
             </div>
             <div class="grow max-w-96 flex items-center relative text-xs">
-              <ph-magnifying-glass class="text-xl absolute left-3" />
+              <ph-magnifying-glass
+                class="text-xl absolute left-3 pointer-events-none"
+              />
               <input
                 type="search"
                 placeholder="Search Users by Name, Email or Date"
-                class="grow rounded-lg bg-[#F4F2FF] p-3 pl-[2.625rem]"
+                class="grow rounded-lg bg-[#F4F2FF] p-3 pl-[2.625rem] border border-transparent focus-visible:border-[#6D5BD0] transition outline-none"
               />
             </div>
             <button
@@ -196,7 +208,11 @@ const showFilters = ref(false);
               <div v-if="false"></div>
             </div>
           </div>
-          <table-row v-for="user in users" :key="user.id" v-bind="user" />
+          <table-row
+            v-for="user in usersStore.users"
+            :key="user.id"
+            v-bind="user"
+          />
         </div>
       </template>
       <p v-else class="my-auto text-center font-medium text-red-500 text-base">

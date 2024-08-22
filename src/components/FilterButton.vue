@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { PhCircle, PhRadioButton } from "@phosphor-icons/vue";
-import { defineProps } from "vue";
 
 defineProps<{
   selectedValue: string;
@@ -23,7 +22,7 @@ const emit = defineEmits<{
       :value="id"
       :checked="selectedValue === id"
       class="sr-only peer"
-      @change="({currentTarget})=> emit('update:selectedValue', (currentTarget as HTMLInputElement).value)"
+      @change="({ currentTarget }) => emit('update:selectedValue', (currentTarget as HTMLInputElement).value)"
     />
     <label
       :for="id"

@@ -1,0 +1,227 @@
+[
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1b1",
+    "name": "Justin Septimus",
+    "email": "justin.septimus@example.com",
+    "user_status": true,
+    "last_login": "2020-04-14",
+    "payment_status": "Paid",
+    "amount": 200,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "user_activity": "Completed payment",
+    "details": "Successfully paid dues on 15/APR/2020.",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3eaaaa000000000001",
+        "date": "2020-04-13",
+        "activity": "Payment confirmation",
+        "detail": "Email confirmation sent for payment of $200."
+      },
+      {
+        "id": "5f1b5a3eaaaa000000000002",
+        "date": "2020-04-11",
+        "activity": "Profile update",
+        "detail": "User updated their profile information."
+      },
+      {
+        "id": "5f1b5a3eaaaa000000000003",
+        "date": "2020-04-09",
+        "activity": "Contacted support",
+        "detail": "User contacted support for payment assistance."
+      },
+      {
+        "id": "5f1b5a3eaaaa000000000004",
+        "date": "2020-04-07",
+        "activity": "Received payment reminder",
+        "detail": "Reminder email sent for upcoming payment due."
+      },
+      {
+        "id": "5f1b5a3eaaaa000000000005",
+        "date": "2020-04-03",
+        "activity": "Checked account balance",
+        "detail": "User logged in to check account balance."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1b2",
+    "name": "Anika Rhiel Madsen",
+    "email": "anika.madsen@example.com",
+    "user_status": true,
+    "last_login": "2020-04-14",
+    "payment_status": "Overdue",
+    "amount": 300,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "user_activity": "Failed payment attempt",
+    "details": "Attempted to pay dues but encountered an error.",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3ebbbb000000000001",
+        "date": "2020-04-13",
+        "activity": "Payment attempt failed",
+        "detail": "Failed payment attempt due to insufficient funds."
+      },
+      {
+        "id": "5f1b5a3ebbbb000000000002",
+        "date": "2020-04-10",
+        "activity": "Updated payment method",
+        "detail": "User updated their payment method details."
+      },
+      {
+        "id": "5f1b5a3ebbbb000000000003",
+        "date": "2020-04-08",
+        "activity": "Contacted support",
+        "detail": "User contacted support regarding payment issues."
+      },
+      {
+        "id": "5f1b5a3ebbbb000000000004",
+        "date": "2020-04-06",
+        "activity": "Received payment reminder",
+        "detail": "Reminder email sent for upcoming payment due."
+      },
+      {
+        "id": "5f1b5a3ebbbb000000000005",
+        "date": "2020-04-02",
+        "activity": "Checked payment history",
+        "detail": "User checked payment history for past transactions."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1b3",
+    "name": "Miracle Vaccaro",
+    "email": "miracle.vaccaro@example.com",
+    "user_status": true,
+    "last_login": "2020-04-14",
+    "payment_status": "Paid",
+    "amount": 250,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "user_activity": "Confirmed payment",
+    "details": "Payment of $250 successfully processed.",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3ecccc000000000001",
+        "date": "2020-04-12",
+        "activity": "Payment confirmation",
+        "detail": "Email confirmation sent for payment of $250."
+      },
+      {
+        "id": "5f1b5a3ecccc000000000002",
+        "date": "2020-04-10",
+        "activity": "Security update",
+        "detail": "User updated their security settings."
+      },
+      {
+        "id": "5f1b5a3ecccc000000000003",
+        "date": "2020-04-08",
+        "activity": "Profile information updated",
+        "detail": "User updated their profile information."
+      },
+      {
+        "id": "5f1b5a3ecccc000000000004",
+        "date": "2020-04-06",
+        "activity": "Received payment reminder",
+        "detail": "Reminder email sent for upcoming payment."
+      },
+      {
+        "id": "5f1b5a3ecccc000000000005",
+        "date": "2020-04-02",
+        "activity": "Reviewed account details",
+        "detail": "User reviewed account details and settings."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1b4",
+    "name": "Erin Levin",
+    "email": "erin.levin@example.com",
+    "user_status": true,
+    "last_login": "2020-04-14",
+    "payment_status": "Unpaid",
+    "amount": 300,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "user_activity": "Inquired about payment options",
+    "details": "User inquired about different payment methods.",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3edddd000000000001",
+        "date": "2020-04-12",
+        "activity": "Payment inquiry",
+        "detail": "User asked about alternative payment options."
+      },
+      {
+        "id": "5f1b5a3edddd000000000002",
+        "date": "2020-04-10",
+        "activity": "Updated account information",
+        "detail": "User updated their account information."
+      },
+      {
+        "id": "5f1b5a3edddd000000000003",
+        "date": "2020-04-08",
+        "activity": "Contacted support",
+        "detail": "User contacted support for assistance."
+      },
+      {
+        "id": "5f1b5a3edddd000000000004",
+        "date": "2020-04-06",
+        "activity": "Received payment reminder",
+        "detail": "Reminder email sent for upcoming payment due."
+      },
+      {
+        "id": "5f1b5a3edddd000000000005",
+        "date": "2020-04-02",
+        "activity": "Viewed account status",
+        "detail": "User checked their account status."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1b5",
+    "name": "Mira Herwitz",
+    "email": "mira.herwitz@example.com",
+    "user_status": false,
+    "last_login": "2020-04-14",
+    "payment_status": "Unpaid",
+    "amount": 200,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "user_activity": "No recent activity",
+    "details": "User account is inactive.",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3eeeee000000000001",
+        "date": "2020-04-12",
+        "activity": "Account deactivation notice",
+        "detail": "Email notification sent regarding account deactivation."
+      },
+      {
+        "id": "5f1b5a3eeeee000000000002",
+        "date": "2020-04-10",
+        "activity": "Missed payment reminder",
+        "detail": "Reminder sent for missed payment due on 15/APR/2020."
+      },
+      {
+        "id": "5f1b5a3eeeee000000000003",
+        "date": "2020-04-08",
+        "activity": "Login attempt failed",
+        "detail": "User attempted to log in but the account was inactive."
+      },
+      {
+        "id": "5f1b5a3eeeee000000000004",
+        "date": "2020-04-06",
+        "activity": "Password reset attempt",
+        "detail": "User attempted to reset password but the account was inactive."
+      },
+      {
+        "id": "5f1b5a3eeeee000000000005",
+        "date": "2020-04-02",
+        "activity": "Account inactivity notice",
+        "detail": "User received notification about account inactivity."
+      }
+    ]
+  }
+]
