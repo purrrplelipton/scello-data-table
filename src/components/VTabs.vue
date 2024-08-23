@@ -29,5 +29,8 @@ const store = useStore();
         {{ label }}
       </label>
     </div>
+    <p class="ml-auto *:not-italic">
+      Total payable amount: <i>{{}}</i> <i>{{}}</i>
+    </p>
   </div>
 </template>

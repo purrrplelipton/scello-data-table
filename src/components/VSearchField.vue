@@ -19,6 +19,7 @@ const emit = defineEmits<{
     />
     <input
       type="search"
+      name="usersSearch"
       :value
       @change="(event) => emit('change', event)"
       :readonly="disabled"

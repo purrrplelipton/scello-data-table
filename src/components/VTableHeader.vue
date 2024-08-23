@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { vAutoAnimate } from "@formkit/auto-animate/vue";
-import { PhDotsThreeVertical, PhX } from "@phosphor-icons/vue";
+import { PhDotsThreeVertical, PhSquare, PhX } from "@phosphor-icons/vue";
 import { useFocusTrap } from "@vueuse/integrations";
 import { ref, watch } from "vue";
-import useStore from "~/stores";
-import Checkbox from "./Checkbox.vue";
-
-const store = useStore();
 
 const moreOptionsWrapper = ref<HTMLDivElement | null>(null);
 const showMoreOptions = ref(false);
@@ -22,26 +18,6 @@ watch(showMoreOptions, (showMoreOptions) => {
   if (showMoreOptions) return activate();
   deactivate();
 });
-
-function onChange({ target }: Event) {
-  if (!store.users || store.users.length < 1) return;
-  const { checked } = target as HTMLInputElement;
-  store.setSelectedAll(checked);
-  if (store.selectedAll) {
-    store.setSelectedRows(store.users.map((user) => user.id));
-  } else {
-    store.setSelectedRows([]);
-  }
-}
-
-watch(store.selectedRows, (selectedRows) => {
-  if (!store.users || store.users.length < 1) return;
-  if (selectedRows.length < store.users.length) {
-    store.setSelectedAll(false);
-  } else {
-    store.setSelectedAll(true);
-  }
-});
 </script>
 
 <template>
@@ -49,12 +25,7 @@ watch(store.selectedRows, (selectedRows) => {
     class="shrink-0 grid gap-7 grid-cols-[auto_1fr_auto] bg-[#F4F2FF] py-3.5 px-5 overflow-y-scroll"
   >
     <div class="flex gap-5 items-center">
-      <Checkbox
-        id="selectAllRows"
-        :checked="store.selectedAll"
-        @change="onChange"
-      />
-
+      <PhSquare :size="20" weight="bold" />
       <div class="size-4"></div>
     </div>
     <div

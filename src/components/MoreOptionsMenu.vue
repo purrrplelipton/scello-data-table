@@ -3,13 +3,12 @@ import { vAutoAnimate } from "@formkit/auto-animate/vue";
 import { PhDotsThreeVertical, PhX } from "@phosphor-icons/vue";
 import { useFocusTrap } from "@vueuse/integrations";
 import { ref, watch } from "vue";
+import useStore from "~/stores";
+
+const store = useStore();
 
 defineProps<{
   id: string;
-}>();
-
-const emit = defineEmits<{
-  (e: "delete", id: string): void;
 }>();
 
 const dropdownWrapper = ref<HTMLDivElement | null>(null);
@@ -26,6 +25,15 @@ watch(dropdownIsShown, (dropdownIsShown) => {
   if (dropdownIsShown) return activate();
   deactivate();
 });
+
+function deleteRow(rowId: string) {
+  dropdownIsShown.value = false;
+  setTimeout(() => {
+    const filteredUsers = store.users?.filter((user) => user.id !== rowId);
+    if (!filteredUsers) return;
+    store.setUsers(filteredUsers);
+  }, 625);
+}
 </script>
 
 <template>
@@ -59,12 +67,7 @@ watch(dropdownIsShown, (dropdownIsShown) => {
       <hr class="border-0 h-px bg-[#F2F0F9] my-1" />
       <button
         type="button"
-        @click="
-          () => {
-            dropdownIsShown = false;
-            emit('delete', id);
-          }
-        "
+        @click="deleteRow(id)"
         class="hover:!bg-red-100 focus-visible:!bg-red-100 !text-red-600"
       >
         Delete

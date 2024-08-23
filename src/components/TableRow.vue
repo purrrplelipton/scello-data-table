@@ -14,36 +14,28 @@ const props = defineProps<IUser>();
 
 const isExpanded = ref(false);
 
-function deleteRow(rowId: string) {
-  setTimeout(() => {
-    const filteredUsers = store.users?.filter((user) => user.id !== rowId);
-    if (!filteredUsers) return;
-    store.setUsers(filteredUsers);
-  }, 625);
-}
-
 function onChange({ target }: Event) {
   const { checked, value } = target as HTMLInputElement;
-  console.log({ checked });
-  store.setSelectedRows(
-    checked
-      ? store.selectedRows.filter((rowId) => rowId !== value)
-      : store.selectedRows.concat(value)
-  );
+  store.setSelectedRow(checked ? value : null);
 }
 
-const checked = computed(() => store.selectedRows.includes(props.id));
+const selected = computed(() => store.selectedRow === props.id);
 </script>
 
 <template>
-  <div
-    class="transition divide-y *:border-[#D9D5EC]"
-    :class="{ 'bg-[#F4F2FF]': isExpanded }"
-    v-auto-animate
-  >
-    <div class="grid gap-7 grid-cols-[auto_1fr_auto] px-5">
+  <div :class="{ 'bg-[#F4F2FF]': isExpanded }" v-auto-animate>
+    <div
+      class="grid gap-7 grid-cols-[auto_1fr_auto] px-5 relative before:absolute before:inset-0 before:right-auto before:w-[0.3125rem] before:transition"
+      :class="[selected ? 'before:bg-[#6D5BD0]' : 'before:bg-transparent']"
+    >
       <div class="flex gap-5 items-center">
-        <checkbox :id="`selectRow_${id}`" :checked @change="onChange" />
+        <checkbox
+          name="select-row"
+          :ariaLabel="`select row with ID ${id}`"
+          :id="`select-row_${id}`"
+          :checked="store.selectedRow === id"
+          @change="onChange"
+        />
         <button
           type="button"
           @click="isExpanded = !isExpanded"
@@ -84,9 +76,9 @@ const checked = computed(() => store.selectedRows.includes(props.id));
         >
           <span class="p-px">view more</span>
         </button>
-        <more-options-menu :id @delete="deleteRow" />
+        <more-options-menu :id />
       </div>
     </div>
-    <ExpandedDetails v-if="isExpanded" :expanded_details />
+    <expanded-details v-if="isExpanded" :expanded_details />
   </div>
 </template>

@@ -41,7 +41,7 @@ export default defineStore(createId(), {
     activeTab: string;
     working: boolean;
     selectedAll: boolean;
-    selectedRows: Array<string>;
+    selectedRow: string | null;
     selectedFilter1: string;
     selectedFilter2: string;
     filter3: string;
@@ -51,7 +51,7 @@ export default defineStore(createId(), {
       working: false,
       activeTab: tabs[0].value,
       selectedAll: false,
-      selectedRows: [],
+      selectedRow: null,
       selectedFilter1: filter1[0].value,
       selectedFilter2: filter2[0].value,
       filter3: "",
@@ -80,8 +80,8 @@ export default defineStore(createId(), {
     setSelectedAll(hasSelectedAll: boolean) {
       this.selectedAll = hasSelectedAll
     },
-    setSelectedRows(newSelectedRows: Array<string>) {
-      this.selectedRows = newSelectedRows
+    setSelectedRow(newSelectedRow: string | null) {
+      this.selectedRow = newSelectedRow
     },
     setUsers(users: IUser[] | null) {
       this.users = users;

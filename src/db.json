@@ -5,12 +5,10 @@
     "email": "justin.septimus@example.com",
     "user_status": true,
     "last_login": "2020-04-14",
-    "payment_status": "Paid",
+    "payment_status": "paid",
     "amount": 200,
     "currency": "USD",
     "due_date": "2020-04-15",
-    "user_activity": "Completed payment",
-    "details": "Successfully paid dues on 15/APR/2020.",
     "expanded_details": [
       {
         "id": "5f1b5a3eaaaa000000000001",
@@ -50,12 +48,10 @@
     "email": "anika.madsen@example.com",
     "user_status": true,
     "last_login": "2020-04-14",
-    "payment_status": "Overdue",
+    "payment_status": "overdue",
     "amount": 300,
     "currency": "USD",
     "due_date": "2020-04-15",
-    "user_activity": "Failed payment attempt",
-    "details": "Attempted to pay dues but encountered an error.",
     "expanded_details": [
       {
         "id": "5f1b5a3ebbbb000000000001",
@@ -95,44 +91,11 @@
     "email": "miracle.vaccaro@example.com",
     "user_status": true,
     "last_login": "2020-04-14",
-    "payment_status": "Paid",
+    "payment_status": "paid",
     "amount": 250,
     "currency": "USD",
     "due_date": "2020-04-15",
-    "user_activity": "Confirmed payment",
-    "details": "Payment of $250 successfully processed.",
-    "expanded_details": [
-      {
-        "id": "5f1b5a3ecccc000000000001",
-        "date": "2020-04-12",
-        "activity": "Payment confirmation",
-        "detail": "Email confirmation sent for payment of $250."
-      },
-      {
-        "id": "5f1b5a3ecccc000000000002",
-        "date": "2020-04-10",
-        "activity": "Security update",
-        "detail": "User updated their security settings."
-      },
-      {
-        "id": "5f1b5a3ecccc000000000003",
-        "date": "2020-04-08",
-        "activity": "Profile information updated",
-        "detail": "User updated their profile information."
-      },
-      {
-        "id": "5f1b5a3ecccc000000000004",
-        "date": "2020-04-06",
-        "activity": "Received payment reminder",
-        "detail": "Reminder email sent for upcoming payment."
-      },
-      {
-        "id": "5f1b5a3ecccc000000000005",
-        "date": "2020-04-02",
-        "activity": "Reviewed account details",
-        "detail": "User reviewed account details and settings."
-      }
-    ]
+    "expanded_details": []
   },
   {
     "id": "5f1b5a3e7b1d6b2a09c4f1b4",
@@ -140,12 +103,10 @@
     "email": "erin.levin@example.com",
     "user_status": true,
     "last_login": "2020-04-14",
-    "payment_status": "Unpaid",
+    "payment_status": "unpaid",
     "amount": 300,
     "currency": "USD",
     "due_date": "2020-04-15",
-    "user_activity": "Inquired about payment options",
-    "details": "User inquired about different payment methods.",
     "expanded_details": [
       {
         "id": "5f1b5a3edddd000000000001",
@@ -185,12 +146,10 @@
     "email": "mira.herwitz@example.com",
     "user_status": false,
     "last_login": "2020-04-14",
-    "payment_status": "Unpaid",
+    "payment_status": "unpaid",
     "amount": 200,
     "currency": "USD",
     "due_date": "2020-04-15",
-    "user_activity": "No recent activity",
-    "details": "User account is inactive.",
     "expanded_details": [
       {
         "id": "5f1b5a3eeeee000000000001",
@@ -221,6 +180,254 @@
         "date": "2020-04-02",
         "activity": "Account inactivity notice",
         "detail": "User received notification about account inactivity."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1b6",
+    "name": "Miracle Vaccaro",
+    "email": "miracle.vaccaro@example.com",
+    "user_status": true,
+    "last_login": "2020-04-14",
+    "payment_status": "paid",
+    "amount": 250,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3effff000000000001",
+        "date": "2020-04-13",
+        "activity": "Completed online course",
+        "detail": "Finished 'Advanced JavaScript' course and received certificate."
+      },
+      {
+        "id": "5f1b5a3effff000000000002",
+        "date": "2020-04-10",
+        "activity": "Downloaded invoice",
+        "detail": "User accessed and downloaded the invoice for the recent payment."
+      },
+      {
+        "id": "5f1b5a3effff000000000003",
+        "date": "2020-04-07",
+        "activity": "Updated profile picture",
+        "detail": "User changed their profile picture in the account settings."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1b7",
+    "name": "Erin Levin",
+    "email": "erin.levin@example.com",
+    "user_status": true,
+    "last_login": "2020-04-14",
+    "payment_status": "unpaid",
+    "amount": 200,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3egggg000000000001",
+        "date": "2020-04-12",
+        "activity": "Requested payment extension",
+        "detail": "User contacted support to request a 7-day extension on payment deadline."
+      },
+      {
+        "id": "5f1b5a3egggg000000000002",
+        "date": "2020-04-09",
+        "activity": "Attended webinar",
+        "detail": "Participated in 'Effective Time Management' webinar session."
+      },
+      {
+        "id": "5f1b5a3egggg000000000003",
+        "date": "2020-04-06",
+        "activity": "Posted in community forum",
+        "detail": "Started a discussion thread about upcoming feature requests."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1b8",
+    "name": "Mira Herwitz",
+    "email": "mira.herwitz@example.com",
+    "user_status": false,
+    "last_login": "2020-04-14",
+    "payment_status": "paid",
+    "amount": 200,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3ehhhh000000000001",
+        "date": "2020-04-13",
+        "activity": "Account deactivation",
+        "detail": "User requested account deactivation citing personal reasons."
+      },
+      {
+        "id": "5f1b5a3ehhhh000000000002",
+        "date": "2020-04-11",
+        "activity": "Submitted support ticket",
+        "detail": "Inquired about the process for account closure and data deletion."
+      },
+      {
+        "id": "5f1b5a3ehhhh000000000003",
+        "date": "2020-04-08",
+        "activity": "Cancelled subscription",
+        "detail": "User cancelled their recurring subscription plan."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1b9",
+    "name": "Jaxson Siphron",
+    "email": "jaxson.siphron@example.com",
+    "user_status": false,
+    "last_login": "2020-04-14",
+    "payment_status": "paid",
+    "amount": 750,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3eiiii000000000001",
+        "date": "2020-04-12",
+        "activity": "Requested account deletion",
+        "detail": "User initiated the process for permanent account deletion."
+      },
+      {
+        "id": "5f1b5a3eiiii000000000002",
+        "date": "2020-04-10",
+        "activity": "Exported user data",
+        "detail": "Downloaded all personal data before account closure."
+      },
+      {
+        "id": "5f1b5a3eiiii000000000003",
+        "date": "2020-04-07",
+        "activity": "Completed final project",
+        "detail": "Submitted the last assignment for 'Advanced Data Analysis' course."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1ba",
+    "name": "Mira Levin",
+    "email": "mira.levin@example.com",
+    "user_status": true,
+    "last_login": "2020-04-14",
+    "payment_status": "unpaid",
+    "amount": 200,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3ejjjj000000000001",
+        "date": "2020-04-13",
+        "activity": "Started new course",
+        "detail": "Enrolled in 'Introduction to Machine Learning' course."
+      },
+      {
+        "id": "5f1b5a3ejjjj000000000002",
+        "date": "2020-04-10",
+        "activity": "Updated payment method",
+        "detail": "Changed default payment method to a new credit card."
+      },
+      {
+        "id": "5f1b5a3ejjjj000000000003",
+        "date": "2020-04-07",
+        "activity": "Joined study group",
+        "detail": "Became a member of 'Python Programmers' study group."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1bb",
+    "name": "Lincoln Levin",
+    "email": "lincoln.levin@example.com",
+    "user_status": true,
+    "last_login": "2020-04-14",
+    "payment_status": "paid",
+    "amount": 370,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3ekkkk000000000001",
+        "date": "2020-04-12",
+        "activity": "Upgraded subscription",
+        "detail": "User upgraded from basic to premium subscription plan."
+      },
+      {
+        "id": "5f1b5a3ekkkk000000000002",
+        "date": "2020-04-09",
+        "activity": "Completed survey",
+        "detail": "Provided feedback on recent platform updates."
+      },
+      {
+        "id": "5f1b5a3ekkkk000000000003",
+        "date": "2020-04-06",
+        "activity": "Downloaded resource",
+        "detail": "Accessed and downloaded 'Cybersecurity Best Practices' e-book."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1bc",
+    "name": "Phillip Saris",
+    "email": "phillip.saris@example.com",
+    "user_status": false,
+    "last_login": "2020-04-14",
+    "payment_status": "unpaid",
+    "amount": 200,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3ellll000000000001",
+        "date": "2020-04-13",
+        "activity": "Account suspended",
+        "detail": "Account automatically suspended due to payment failure."
+      },
+      {
+        "id": "5f1b5a3ellll000000000002",
+        "date": "2020-04-10",
+        "activity": "Payment declined",
+        "detail": "Attempted payment was declined due to insufficient funds."
+      },
+      {
+        "id": "5f1b5a3ellll000000000003",
+        "date": "2020-04-07",
+        "activity": "Received final notice",
+        "detail": "User was sent a final payment reminder before suspension."
+      }
+    ]
+  },
+  {
+    "id": "5f1b5a3e7b1d6b2a09c4f1bd",
+    "name": "Cheyenne Ekstrom Bothman",
+    "email": "cheyenne.bothman@example.com",
+    "user_status": false,
+    "last_login": "2020-04-14",
+    "payment_status": "paid",
+    "amount": 150,
+    "currency": "USD",
+    "due_date": "2020-04-15",
+    "expanded_details": [
+      {
+        "id": "5f1b5a3emmmm000000000001",
+        "date": "2020-04-12",
+        "activity": "Requested leave of absence",
+        "detail": "User applied for a 3-month pause on their subscription."
+      },
+      {
+        "id": "5f1b5a3emmmm000000000002",
+        "date": "2020-04-09",
+        "activity": "Completed all courses",
+        "detail": "Finished all available courses in the 'Web Development' track."
+      },
+      {
+        "id": "5f1b5a3emmmm000000000003",
+        "date": "2020-04-06",
+        "activity": "Referred a friend",
+        "detail": "Sent a referral link to a colleague for platform signup."
       }
     ]
   }

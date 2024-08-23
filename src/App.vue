@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { vAutoAnimate } from "@formkit/auto-animate/vue";
-import { PhSpinner } from "@phosphor-icons/vue";
+import {
+  PhCaretDown,
+  PhCaretLeft,
+  PhCaretRight,
+  PhSpinner,
+} from "@phosphor-icons/vue";
 import { onBeforeMount } from "vue";
 import TableRow from "~/components/TableRow.vue";
 import VFilterDropdown from "~/components/VFilterDropdown.vue";
@@ -19,7 +24,7 @@ function loadUsers() {
   store.setSelectedFilter2(filter2[0].value);
   store.setFilter3("");
   store.setSelectedAll(false);
-  store.setSelectedRows([]);
+  store.setSelectedRow(null);
   store.setUsers(null);
   const load_data = new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -47,8 +52,11 @@ onBeforeMount(loadUsers);
         @change="({ target }) => store.setFilter3((target as HTMLInputElement).value)"
       />
       <button
-        :aria-disabled="!store.users || store.users.length < 1"
+        :aria-disabled="
+          !store.users || store.users.length < 1 || !store.selectedRow
+        "
         type="button"
+        @click=""
         class="aria-disabled:opacity-50 aria-disabled:cursor-default transition ml-auto p-2.5 rounded-lg text-white bg-[#6D5BD0] uppercase text-base leading-tight"
       >
         pay dues
@@ -74,13 +82,52 @@ onBeforeMount(loadUsers);
           <v-table-header />
           <div
             v-auto-animate
-            class="grow overflow-auto gutter-stable flex flex-col items-stretch divide-y *:border-[#D9D5EC]"
+            class="grow overflow-auto gutter-stable flex flex-col items-stretch divide-y *:border-[#D9D5EC] *:transition *:divide-y *:*:border-[#D9D5EC]"
           >
             <table-row
               v-for="user in store.users"
               :key="user.id"
               v-bind="user"
             />
+          </div>
+          <div
+            class="flex gap-12 items-center justify-end py-4 px-5 text-[#6E6893] bg-[#F4F2FF] text-xs font-semibold"
+          >
+            <div class="flex gap-1 items-center">
+              <span>Rows per page:</span>
+              <div class="flex items-center relative">
+                <select
+                  class="appearance-none outline-none pl-1 py-0.5 pr-5 leading-none bg-transparent"
+                >
+                  <option>10</option>
+                </select>
+                <ph-caret-down
+                  aria-hidden="true"
+                  weight="fill"
+                  class="absolute right-1 pointer-events-none select-none"
+                />
+              </div>
+            </div>
+            <p class="*:not-italic">
+              <i>{{ 1 }}</i
+              >-<i>{{ 10 }}</i> of <i>{{ 276 }}</i>
+            </p>
+            <div class="flex gap-12 items-center">
+              <button
+                type="button"
+                @click=""
+                class="aspect-square grid place-items-center"
+              >
+                <ph-caret-left weight="bold" />
+              </button>
+              <button
+                type="button"
+                @click=""
+                class="aspect-square grid place-items-center"
+              >
+                <ph-caret-right weight="bold" />
+              </button>
+            </div>
           </div>
         </div>
       </template>

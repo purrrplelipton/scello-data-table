@@ -14,7 +14,7 @@ defineProps<{
 <template>
   <div class="divide-y *:border-[#D9D5EC]">
     <div
-      class="uppercase text-xs font-semibold tracking-widest grid grid-cols-[auto_1fr_auto] gap-7 py-4 px-5"
+      class="uppercase text-xs font-semibold tracking-widest grid grid-cols-[auto_1fr_auto] gap-7 py-4 px-5 bg-[#F2F0F9]"
     >
       <div aria-hidden="true" class="flex gap-5 items-center invisible">
         <div class="size-5"></div>
@@ -42,6 +42,13 @@ defineProps<{
       </div>
     </div>
     <div
+      v-if="expanded_details.length < 1"
+      class="grid place-items-center py-10 text-[#6E6893] text-base leading-tight font-semibold tracking-widest uppercase"
+    >
+      <span>no records found</span>
+    </div>
+    <div
+      v-else
       v-for="{ id, date, activity, detail } in expanded_details"
       :key="id"
       class="items-center text-[#25213B] grid grid-cols-[auto_1fr_auto] gap-7 py-4 px-5"
